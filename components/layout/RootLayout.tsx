@@ -1,9 +1,15 @@
+import Header from './Header';
+
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
 const RootLayout = ({ children }: RootLayoutProps) => {
-  return <></>;
+  return (
+    <>
+      <Header></Header>
+    </>
+  );
 };
 
 export default RootLayout;
