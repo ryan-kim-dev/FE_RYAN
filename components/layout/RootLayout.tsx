@@ -1,4 +1,5 @@
 import Header from './Header';
+import Footer from './Footer';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -7,7 +8,8 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <>
-      <Header></Header>
+      <Header />
+      <Footer />
     </>
   );
 };
