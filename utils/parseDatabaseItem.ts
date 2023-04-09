@@ -26,7 +26,7 @@ export const parseDatabaseItems = (
     const { id, icon, cover, created_time } = item; // 타입가드 안하면 item: PageObjectResponse | PartialPageObjectResponse
 
     // 정제한 데이터에 담기 위해 노션 DB 데이터에서 필요한 데이터만 추출
-    const { Created, Description, Tags, Name } = item.properties;
+    const { Description, Tags, Name } = item.properties;
 
     // 글 커버 cover 파싱
     // cover 타입이 여러개이므로 삼항연산자로 분기처리 + null 병합 연산자로 coalescing 처리
