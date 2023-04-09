@@ -1,4 +1,5 @@
-import { getDatabaseItems } from '@/utils/notionClient';
+import { getDatabaseItems } from '@/cms/notionClient';
+import { parseDatabaseItems } from '@/utils/parseDatabaseItem';
 import { GetStaticProps } from 'next';
 
 const Home = () => {
@@ -12,7 +13,8 @@ export const getStaticProps: GetStaticProps = async () => {
   if (!process.env.NOTION_DATABASE_ID)
     throw new Error('NOTION_DATABASE_ID is not defined');
   const databaseItems = await getDatabaseItems(process.env.NOTION_DATABASE_ID);
-  console.log(databaseItems);
+  const parsedDatabaseItems = parseDatabaseItems(databaseItems);
+  console.log(parsedDatabaseItems);
 
   return {
     props: {},
