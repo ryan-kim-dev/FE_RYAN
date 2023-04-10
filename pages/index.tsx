@@ -1,9 +1,14 @@
 import { getDatabaseItems } from '@/cms/notionClient';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItem';
 import { GetStaticProps } from 'next';
+import HeroSection from '@/components/intro/HeroSection';
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <HeroSection />
+    </div>
+  );
 };
 
 export default Home;

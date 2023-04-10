@@ -9,6 +9,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <>
       <Header />
+      <main>{children}</main>
       <Footer />
     </>
   );
