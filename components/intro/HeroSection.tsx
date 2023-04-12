@@ -18,7 +18,7 @@ const HeroSection = () => {
         </p>
         <div>
           <Link href="/about">
-            <button className="px-4 py-2 border border-black rounded-3xl font-semibold flex-shrink-0 hover:bg-black hover:text-white">
+            <button className="px-4 py-2 border border-black  font-semibold flex-shrink-0 hover:bg-black hover:text-white">
               About Me
             </button>
           </Link>

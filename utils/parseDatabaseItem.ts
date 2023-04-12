@@ -4,7 +4,7 @@ import {
   MultiSelectPropertyItemObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints'; // 노션 sdk에서 타입 가져오기
 
-interface ParsedDatabaseItemType {
+export interface ParsedDatabaseItemType {
   id: string;
   cover: string;
   icon: PageObjectResponse['icon']; // 별도로 파싱할 렌더러 추후 처리
