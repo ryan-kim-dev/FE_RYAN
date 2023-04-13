@@ -30,6 +30,7 @@ export const getStaticProps: GetStaticProps<
     props: {
       recordMap,
     },
+    revalidate: 300,
   };
 };
 
