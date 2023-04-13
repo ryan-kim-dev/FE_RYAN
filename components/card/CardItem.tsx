@@ -33,7 +33,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
           <time className="font-medium text-gray-500 text-sm">{created}</time>
         </div>
       </Link>
-      {tags.length >= 0 ? <TagList tags={tags} /> : null}
+      {tags.length > 0 ? <TagList tags={tags} /> : null}
     </li>
   );
 };
