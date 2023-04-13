@@ -2,6 +2,7 @@ import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItem';
 import Link from 'next/link';
 import Image from 'next/image';
 import IconRenderer from './IconRenderer';
+import TagList from './tag/TagList';
 
 interface CardItemProps {
   cardItem: ParsedDatabaseItemType;
@@ -12,7 +13,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
 
   return (
     <li className="overflow-hidden shadow-lg group flex flex-col">
-      <Link href={`blog/${id}`}>
+      <Link href={`blog/${id}`} className="flex-grow">
         <div className="relative aspect-[1.3/1]">
           <Image
             src={cover}
@@ -32,6 +33,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
           <time className="font-medium text-gray-500 text-sm">{created}</time>
         </div>
       </Link>
+      {tags.length >= 0 ? <TagList tags={tags} /> : null}
     </li>
   );
 };
