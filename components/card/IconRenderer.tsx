@@ -14,6 +14,8 @@ const IconRenderer = ({ icon }: IconRendererProps) => {
   return (
     <Image
       src={iconUrl}
+      width={28}
+      height={28}
       alt="icon"
       className="rounded-full flex flex-row items-center gap-1"
     />

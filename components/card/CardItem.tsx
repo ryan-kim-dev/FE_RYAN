@@ -18,7 +18,8 @@ const CardItem = ({ cardItem }: CardItemProps) => {
           <Image
             src={cover}
             alt={title}
-            className="group-hover:scale-105 transform"
+            fill
+            className="group-hover:scale-105 transform object-cover transition-transform duration-300"
           />
         </div>
 
