@@ -16,7 +16,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
       <Link href={`blog/${id}`} className="flex-grow">
         <div className="relative aspect-[1.3/1]">
           <Image
-            src={cover}
+            src={cover ? cover : ''}
             alt={title}
             fill
             className="group-hover:scale-105 transform object-cover transition-transform duration-300"

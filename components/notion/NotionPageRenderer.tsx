@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
-import nextImage from 'next/image';
-import nextLink from 'next/link';
+import Image from 'next/image';
+import Link from 'next/link';
 import { ExtendedRecordMap } from 'notion-types';
 import { NotionRenderer } from 'react-notion-x';
 
@@ -54,8 +54,12 @@ const NotionPageRenderer = ({ recordMap }: NotionPageRendererProps) => {
         Equation,
         Pdf,
         Modal,
-        nextLink,
-        nextImage,
+        nextLink: Image,
+        nextImage: Link,
+        propertyDateValue: (value) => {
+          console.log(value);
+        },
+        // propertySelectValue: ({ value }) => {},
       }}
     />
   );
