@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ExtendedRecordMap } from 'notion-types';
 import { NotionRenderer } from 'react-notion-x';
+import TagItem from '../card/tag/TagItem';
 
 // * 렌더링 최적화를 위한 지연 로딩 - react-notion-x 패키지 용량 꽤 크다.
 const Code = dynamic(
@@ -56,10 +57,22 @@ const NotionPageRenderer = ({ recordMap }: NotionPageRendererProps) => {
         Modal,
         nextLink: Image,
         nextImage: Link,
-        propertyDateValue: (value) => {
-          console.log(value);
+        propertySelectValue: ({ option: { id, color, value: name } }) => {
+          // 구조분해할당 2번 사용하기
+          // option을 구조분해할당으로 받아와서
+          // option 안의 color, id, value를 다시 구조분해할당으로 받아온다.
+          // 구조분해할당 2번 사용 + value를 name으로 바꿔서 사용
+          return (
+            <TagItem
+              key={id}
+              tagItem={{
+                id,
+                name,
+                color,
+              }}
+            />
+          );
         },
-        // propertySelectValue: ({ value }) => {},
       }}
     />
   );
