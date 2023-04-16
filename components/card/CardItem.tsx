@@ -13,7 +13,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
 
   return (
     <li className="overflow-hidden shadow-lg group flex flex-col">
-      <Link href={`blog/${id}`} className="flex-grow">
+      <Link href={`/blog/${id}`} className="flex-grow">
         <div className="relative aspect-[1.3/1]">
           <Image
             src={cover ? cover : ''}
