@@ -6,19 +6,25 @@ import {
   ParsedDatabaseItemType,
   parseDatabaseItems,
 } from '@/utils/parseDatabaseItem';
+import CardSection from '@/components/intro/CardSection';
+import TagHeroSection from '@/components/tags/TagHeroSection';
 
 interface TagPageProps {
   databaseItems: ParsedDatabaseItemType[];
+  tagName: string;
 }
 
 interface TagPageParams extends ParsedUrlQuery {
   tagName: string;
 }
 
-const TagPage = ({ databaseItems }: TagPageProps) => {
-  console.log(databaseItems);
-
-  return <div>tag</div>;
+const TagPage = ({ databaseItems, tagName }: TagPageProps) => {
+  return (
+    <div>
+      <TagHeroSection title={`#${tagName}`} />
+      <CardSection cardItems={databaseItems} />
+    </div>
+  );
 };
 
 export default TagPage;
@@ -28,12 +34,13 @@ export const getStaticProps: GetStaticProps<
   TagPageParams
 > = async ({ params }) => {
   const { tagName } = params!;
+  const pascalTagName = tagName[0].toUpperCase() + tagName.slice(1); // 첫글자만 대묹로
 
   if (!process.env.NOTION_DATABASE_ID)
     throw new Error('NOTION_DATABASE_ID is not defined');
   const databaseItems = await getDatabaseItems(process.env.NOTION_DATABASE_ID, {
     filter: {
-      tagName: tagName[0].toUpperCase() + tagName.slice(1), // 첫글자만 대묹로
+      tagName: pascalTagName,
     },
   });
 
@@ -42,6 +49,7 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       databaseItems: parsedDatabaseItems,
+      tagName: pascalTagName,
     },
   };
 };
