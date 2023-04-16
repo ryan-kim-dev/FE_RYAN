@@ -21,8 +21,9 @@ const TagsIndexPage = ({ tags }: TagsIndexPageProps) => {
 export default TagsIndexPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  if (!process.env.DATABASE_ID) throw new Error('DATABASE_ID is not defined');
-  const databaseItems = await getDatabaseItems(process.env.DATABASE_ID);
+  if (!process.env.NOTION_DATABASE_ID)
+    throw new Error('DATABASE_ID is not defined');
+  const databaseItems = await getDatabaseItems(process.env.NOTION_DATABASE_ID);
   const tags = getAllTags(databaseItems);
 
   return {
