@@ -7,14 +7,33 @@ export const notionClient = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export const getDatabaseItems = async (databaseId: string) => {
+interface DatabaseQueryOptions {
+  filter?: {
+    tagName?: string;
+  };
+}
+
+export const getDatabaseItems = async (
+  databaseId: string,
+  option?: DatabaseQueryOptions
+) => {
   const response = await notionClient.databases.query({
     database_id: databaseId,
     filter: {
-      property: 'Published',
-      checkbox: {
-        equals: true,
-      },
+      and: [
+        {
+          property: 'Published',
+          checkbox: {
+            equals: true,
+          },
+        },
+        {
+          property: 'Tags',
+          multi_select: {
+            contains: option?.filter?.tagName ?? '',
+          },
+        },
+      ],
     },
     sorts: [
       {
