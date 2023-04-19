@@ -52,11 +52,21 @@ export const getDatabaseItems = async (
 
 /** 노션db의 글 목록에서 글 제목으로 검색 */
 export const getSearchResults = async (query: string) => {
+  // 노션 api 자체에서 아직 filter와 sort 옵션은 아래의 값들만 지원됨
+  // 들어갈 수 있는 값 리스트 보기: ctrl + space
   const response = await notionClient.search({
     query,
+    filter: {
+      property: 'object',
+      value: 'page',
+    },
+    sort: {
+      direction: 'descending',
+      timestamp: 'last_edited_time',
+    },
   });
 
-  return response.results as (PageObjectResponse | PartialPageObjectResponse)[];
+  return response.results as (PageObjectResponse | PartialPageObjectResponse)[]; // type assertion (타입 단언) - 되도록 지양, 마지막으로 쓸것
 };
 
 /** 비공식 노션 Sdk 인스턴스 - react-notion-x로 노션 페이지 렌더링을 위해 사용 */
