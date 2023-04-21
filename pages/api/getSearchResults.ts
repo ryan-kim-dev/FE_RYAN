@@ -1,10 +1,17 @@
 import { getSearchResults } from '@/cms/notionClient';
-import { parseDatabaseItems } from '@/utils/parseDatabaseItem';
+import {
+  parseDatabaseItems,
+  ParsedDatabaseItemType,
+} from '@/utils/parseDatabaseItem';
 import type { NextApiRequest, NextApiResponse } from 'next';
+
+interface GetSearchResultsResponse {
+  databaseItems: ParsedDatabaseItemType[];
+}
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse<GetSearchResultsResponse>
 ) {
   const { query } = req.query;
 
@@ -16,5 +23,5 @@ export default async function handler(
   const parsedSearchResults = parseDatabaseItems(searchResults);
   console.log('parsedSearchResults', parsedSearchResults);
 
-  res.status(200).json(parsedSearchResults);
+  res.status(200).json({ databaseItems: parsedSearchResults });
 }
