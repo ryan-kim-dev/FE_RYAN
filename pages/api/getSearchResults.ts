@@ -5,7 +5,7 @@ import {
 } from '@/utils/parseDatabaseItem';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-interface GetSearchResultsResponse {
+export interface GetSearchResultsResponse {
   databaseItems: ParsedDatabaseItemType[];
 }
 
@@ -21,7 +21,6 @@ export default async function handler(
   const searchResults = await getSearchResults(searchQuery);
 
   const parsedSearchResults = parseDatabaseItems(searchResults);
-  console.log('parsedSearchResults', parsedSearchResults);
 
   res.status(200).json({ databaseItems: parsedSearchResults });
 }

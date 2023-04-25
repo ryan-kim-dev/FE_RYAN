@@ -1,8 +1,13 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import CardList from '../card/CardList';
+import { GetSearchResultsResponse } from '@/pages/api/getSearchResults';
+import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItem';
 
 const SearchResultSection = () => {
+  const [searchResult, setSearchResult] = useState<ParsedDatabaseItemType[]>(
+    []
+  );
   // query.query = 검색어 쿼리 내용(string | string[] | undefined)
 
   const { query } = useRouter();
@@ -15,8 +20,10 @@ const SearchResultSection = () => {
       const response = await fetch(
         `/api/getSearchResults?query=${searchQuery}`
       );
-      const { results } = await response.json();
-      console.log(results);
+      if (!response.ok) throw new Error(response.statusText);
+
+      const { databaseItems }: GetSearchResultsResponse = await response.json();
+      setSearchResult(databaseItems);
     };
     getSearchResult();
   }, [searchQuery]);
@@ -24,8 +31,7 @@ const SearchResultSection = () => {
   return (
     <section>
       <div className="w-4/5 max-w-5xl mx-auto my-16">
-        <CardList cardItems={[]} />
-        {query.query}
+        <CardList cardItems={searchResult} />
       </div>
     </section>
   );
