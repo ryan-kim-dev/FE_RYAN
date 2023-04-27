@@ -1,10 +1,11 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 const SearchInputSection = () => {
-  const { push } = useRouter();
+  const { push, query } = useRouter();
   const [searchValue, setSearchValue] = useState('');
+  const searchQuery = query.query?.toString();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,6 +16,10 @@ const SearchInputSection = () => {
 
     push(`/search?query=${trimmedValue}`);
   };
+
+  useEffect(() => {
+    setSearchValue(searchQuery ?? '');
+  }, [searchQuery]);
 
   return (
     <section className="bg-black">
