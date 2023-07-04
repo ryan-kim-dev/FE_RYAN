@@ -9,10 +9,10 @@ const TagHeroSection = ({
 }: TagHeroSectionProps) => {
   return (
     <section>
-      <div className="w-4/5 max-w-5xl mx-auto py-16 flex flex-col gap-4">
-        <p className="font-medium text-gray-500 text-2xl">{subtitle}</p>
+      <div>
+        <p>{subtitle}</p>
 
-        <h2 className="font-bold text-7xl">{title}</h2>
+        <h2>{title}</h2>
       </div>
     </section>
   );

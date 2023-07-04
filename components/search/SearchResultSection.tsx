@@ -30,7 +30,7 @@ const SearchResultSection = () => {
 
   return (
     <section>
-      <div className="w-4/5 max-w-5xl mx-auto my-16">
+      <div>
         <CardList cardItems={searchResult} />
       </div>
     </section>

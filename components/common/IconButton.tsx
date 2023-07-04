@@ -3,11 +3,7 @@ interface IconButtonProps {
 }
 
 const IconButton = ({ icon }: IconButtonProps) => {
-  return (
-    <button className="p-2 bg-black rounded-md hover:bg-gray-700">
-      {icon}
-    </button>
-  );
+  return <button>{icon}</button>;
 };
 
 export default IconButton;

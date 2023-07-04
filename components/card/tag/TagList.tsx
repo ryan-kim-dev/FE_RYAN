@@ -7,7 +7,7 @@ interface TagListProps {
 
 const TagList = ({ tags }: TagListProps) => {
   return (
-    <ul className="p-4 flex flex-row flex-wrap gap-2">
+    <ul>
       {tags.map((tag) => (
         <TagItem key={tag.id} tagItem={tag} />
       ))}

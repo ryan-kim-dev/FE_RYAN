@@ -11,7 +11,7 @@ interface TagsIndexPageProps {
 
 const TagsIndexPage = ({ tags }: TagsIndexPageProps) => {
   return (
-    <div className="h-[calc(100vh-72px-88px)]">
+    <div>
       <TagHeroSection />
       <TagContainer tags={tags} />
     </div>
