@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.3",
+    "@react-three/drei": "^9.78.0",
+    "@react-three/fiber": "^8.13.4",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
     "eslint": "8.37.0",
     "eslint-config-next": "13.3.0",
-    "next": "^13.4.2",
+    "next": "^13.4.8",
     "notion-client": "^6.16.0",
     "notion-types": "^6.16.0",
     "notion-utils": "^6.16.0",
@@ -26,6 +28,7 @@
     "react-notion-x": "^6.16.0",
     "sass": "^1.61.0",
     "sharp": "^0.32.0",
+    "three": "^0.154.0",
     "typescript": "5.0.3"
   },
   "devDependencies": {
